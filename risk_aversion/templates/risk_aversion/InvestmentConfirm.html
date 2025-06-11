@@ -1,12 +1,190 @@
-{% block title %} Investissez vos jetons - Décision {{ i_visible }} {% endblock %}
+{% block title %}
+<div class="header">
+    <h1>Investissez vos jetons</h1>
+    <h2>Décision {{ i_visible }}</h2>
+</div>
+{% endblock %}
 
 {% block content %}
-<h2>✅ Votre décision {{ i_visible }} (en réalité {{ i_decision }}) a bien été enregistrée</h2>
+<div class="container">
+    <div class="confirmation-card">
+        <div class="success-message">
+            <div class="icon">✅</div>
+            <h2>Votre décision {{ i_visible }} (en réalité {{ i_decision }}) a bien été enregistrée</h2>
+        </div>
 
-<p>⚠️ Elle pourra être tirée au sort à la fin de cette étape pour déterminer vos gains.</p>
-<p><strong>À ce stade :</strong><br>
-  Votre décision n’a pas encore été tirée au sort. Vous avez toujours <strong>{{ player.payoff | to0 }}</strong>.
-</p>
+        <div class="info-section">
+            <div class="warning-box">
+                <div class="warning-icon">⚠️</div>
+                <p>Elle pourra être tirée au sort à la fin de cette étape pour déterminer vos gains.</p>
+            </div>
 
-{{ next_button }}
+            <div class="status-box">
+                <h3>À ce stade :</h3>
+                <p>Votre décision n'a pas encore été tirée au sort.</p>
+                <div class="current-balance">
+                    <span class="balance-label">Votre solde actuel :</span>
+                    <span class="balance-amount">{{ player.payoff | to0 }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container">
+        {{ next_button }}
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .header h1 {
+        color: #2c3e50;
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .header h2 {
+        color: #7f8c8d;
+        font-size: 1.5em;
+    }
+
+    .confirmation-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    .success-message {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .success-message .icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+    }
+
+    .success-message h2 {
+        color: #2c3e50;
+        font-size: 1.5em;
+        margin: 0;
+    }
+
+    .info-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .warning-box {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        border-radius: 6px;
+    }
+
+    .warning-icon {
+        font-size: 1.5em;
+        margin-right: 15px;
+    }
+
+    .warning-box p {
+        margin: 0;
+        color: #856404;
+    }
+
+    .status-box {
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .status-box h3 {
+        color: #2c3e50;
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.2em;
+    }
+
+    .current-balance {
+        margin-top: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .balance-label {
+        color: #6c757d;
+        margin-right: 10px;
+    }
+
+    .balance-amount {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #27ae60;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .otree-btn-next {
+        background-color: #3498db;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .otree-btn-next:hover {
+        background-color: #2980b9;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        .confirmation-card {
+            padding: 20px;
+        }
+
+        .success-message h2 {
+            font-size: 1.2em;
+        }
+
+        .warning-box {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .warning-icon {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+</style>
 {% endblock %}

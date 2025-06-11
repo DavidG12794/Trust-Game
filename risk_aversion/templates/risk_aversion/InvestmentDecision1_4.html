@@ -1,29 +1,211 @@
-{{ block title }} Investissez vos jetons – Décision {{ player.i_decision }} {{ endblock }} 
+{{ block title }}
+<div class="header">
+    <h1>Investissez vos jetons</h1>
+    <h2>Décision {{ player.i_decision }}</h2>
+</div>
+{{ endblock }}
+
 {{ block content }}
+<div class="container">
+    <div class="decision-card">
+        <div class="question-section">
+            <h3>Combien souhaitez-vous investir ?</h3>
+            
+            <div class="investment-form">
+                {{ if player.i_decision == 1 }}
+                    {{ formfield 'inv1' }}
+                {{ elif player.i_decision == 2}}
+                    {{ formfield 'inv2' }}
+                {{ elif player.i_decision == 3}}
+                    {{ formfield 'inv3' }}
+                {{ elif player.i_decision == 4}}
+                    {{ formfield 'inv4' }}
+                {{ endif }}
+            </div>
+        </div>
 
-<p><strong>Combien souhaitez-vous investir ?</strong></p>
+        <div class="preview-section" id="preview">
+            <div class="preview-header">
+                <h3>Résumé de votre investissement</h3>
+                <p id="kept" class="kept-amount"></p>
+            </div>
+            
+            <div class="outcomes">
+                <h4>Vos jetons après tirage :</h4>
+                <div class="outcome-list">
+                    <div class="outcome-item yellow">
+                        <span class="ball">🟡</span>
+                        <span class="label">Boule JAUNE :</span>
+                        <span id="gains_if_yellow" class="amount"></span>
+                    </div>
+                    <div class="outcome-item purple">
+                        <span class="ball">🟣</span>
+                        <span class="label">Boule VIOLETTE :</span>
+                        <span id="gains_if_purple" class="amount"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-{{ if player.i_decision == 1 }}
-    {{ formfield 'inv1' }}
-{{ elif player.i_decision == 2}}
-    {{ formfield 'inv2' }}
-{{ elif player.i_decision == 3}}
-    {{ formfield 'inv3' }}
-{{ elif player.i_decision == 4}}
-    {{ formfield 'inv4' }}
-{{ endif }}
-
-<div id="preview">
-  <p id="kept"></p>
-  <strong>Vos jetons après tirage :</strong>
-  <ul>
-    <li>🟡 Boule JAUNE : <span id="gains_if_yellow"></span></li>
-    <li>🟣 Boule VIOLETTE : <span id="gains_if_purple"></span></li>
-  </ul>
+    <div class="button-container">
+        {{ next_button }}
+    </div>
 </div>
 
-{{ next_button }} 
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-{{ include_sibling 'scripts.html'}} 
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .header h1 {
+        color: #2c3e50;
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .header h2 {
+        color: #7f8c8d;
+        font-size: 1.5em;
+    }
+
+    .decision-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    .question-section {
+        margin-bottom: 30px;
+    }
+
+    .question-section h3 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        font-size: 1.3em;
+    }
+
+    .investment-form {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .preview-section {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .preview-header {
+        margin-bottom: 20px;
+    }
+
+    .preview-header h3 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .kept-amount {
+        font-size: 1.2em;
+        color: #27ae60;
+        font-weight: bold;
+    }
+
+    .outcomes h4 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+    }
+
+    .outcome-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .outcome-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background: white;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .outcome-item.yellow {
+        border-left: 4px solid #f1c40f;
+    }
+
+    .outcome-item.purple {
+        border-left: 4px solid #9b59b6;
+    }
+
+    .ball {
+        font-size: 1.5em;
+        margin-right: 15px;
+    }
+
+    .label {
+        flex: 1;
+        color: #34495e;
+    }
+
+    .amount {
+        font-weight: bold;
+        color: #27ae60;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .otree-btn-next {
+        background-color: #3498db;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .otree-btn-next:hover {
+        background-color: #2980b9;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        .decision-card {
+            padding: 20px;
+        }
+
+        .outcome-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .ball {
+            margin-right: 0;
+        }
+    }
+</style>
+
+{{ include_sibling 'scripts.html'}}
 
 {{ endblock }}
