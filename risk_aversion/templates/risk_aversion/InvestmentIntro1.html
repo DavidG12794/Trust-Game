@@ -1,41 +1,334 @@
-{{ block title }} Investissez vos jetons – Décision 1 {{ endblock }} 
+{{ block title }}
+<div class="header">
+    <h1>Investissez vos jetons – Décision 1</h1>
+</div>
+{{ endblock }}
 
 {% block content %}
+<div class="container">
+    <div class="info-card">
+        <div class="intro-section">
+            <p class="intro-text">
+                Avec <strong class="highlight">{{ C.MAX_INVESTMENT }}</strong> de <strong>vos</strong> jetons, vous pouvez :
+            </p>
 
-<p>Avec {{ C.MAX_INVESTMENT }} de <strong>vos</strong> jetons, vous pouvez :</p>
+            <div class="options-list">
+                <div class="option-item">
+                    <div class="option-icon">💰</div>
+                    <div class="option-text">tous les garder</div>
+                </div>
+                <div class="option-item">
+                    <div class="option-icon">🎲</div>
+                    <div class="option-text">ou les investir en partie ou en totalité dans un jeu risqué</div>
+                </div>
+            </div>
+        </div>
 
-<ul>
-  <li>💰 tous les garder</li>
-  <li>🎲 ou les investir en partie ou en totalité dans un jeu risqué</li>
-</ul>
+        <div class="game-section">
+            <h3>🔍 Comment fonctionne le jeu risqué ?</h3>
+            
+            <p class="game-description">
+                Un tirage au sort est effectué dans une urne contenant 12 boules : 6 🟡 jaunes et 6 🟣 violettes
+            </p>
 
-<p>🔍 Comment fonctionne le jeu risqué ?</p>
+            <div class="image-container">
+                <img src="https://i.imgur.com/gyd2hhf.png" alt="Urne avec boules" class="game-image">
+            </div>
 
-<p>Un tirage au sort est effectué dans une urne contenant 12 boules : 6 🟡 jaunes et 6 🟣 violettes</p>
+            <p class="probability-text">
+                Avec autant de boules 🟡 que 🟣, vous avez 1 chance sur 2 de tirer chaque boule :
+            </p>
 
-<img src="https://i.imgur.com/gyd2hhf.png" width="">
+            <div class="outcomes-list">
+                <div class="outcome-item yellow">
+                    <div class="outcome-icon">🟡</div>
+                    <div class="outcome-text">
+                        <strong>tirage JAUNE :</strong> vous gagnez 3 fois les jetons investis
+                    </div>
+                </div>
+                <div class="outcome-item purple">
+                    <div class="outcome-icon">🟣</div>
+                    <div class="outcome-text">
+                        <strong>tirage VIOLET :</strong> vous perdez les jetons investis
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<p>Avec autant de boules 🟡 que 🟣, vous avez 1 chance sur 2 de tirer chaque boule : </p>
+        <div class="example-section">
+            <h3><strong>Exemple :</strong> Vous investissez 4 jetons (et en gardez 6).</h3>
+            
+            <div class="example-outcomes">
+                <div class="example-item yellow">
+                    <div class="example-icon">🟡</div>
+                    <div class="example-content">
+                        <div class="example-title"><strong>tirage JAUNE :</strong> vous gagnez 3 × 4 jetons = 12 jetons</div>
+                        <div class="example-detail">Votre total : 12 gagnés + 6 gardés = 18 jetons</div>
+                    </div>
+                </div>
 
-<ul>
-  <li>🟡 tirage JAUNE : vous gagnez 3 fois les jetons investis</li>
-  <li>🟣 tirage VIOLET : vous perdez les jetons investis</li>
-</ul>
+                <div class="example-item purple">
+                    <div class="example-icon">🟣</div>
+                    <div class="example-content">
+                        <div class="example-title"><strong>tirage VIOLET :</strong> vous perdez les 4 jetons investis et ne gagnez donc rien</div>
+                        <div class="example-detail">Votre total : 0 gagné + 6 gardés = 6 jetons</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<p><strong>Exemple :</strong> Vous investissez 4 jetons (et en gardez 6).</p>
-<ul>
-  <li><strong>🟡 tirage JAUNE :</strong> vous gagnez 3 × 4 jetons = 12 jetons</li>
+    <div class="button-container">
+        {{ next_button }}
+    </div>
+</div>
 
-  <ul>
-      <li>Votre total : 12 gagnés + 6 gardés = 18 jetons</li>
-  </ul>
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-  <li><strong>🟣 tirage VIOLET :</strong> vous perdez les 4 jetons investis et ne gagnez donc rien</li>
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-  <ul>
-      <li>Vote total : 0 gagné + 6 gardés = 6 jetons</li>
-  </ul>
-</ul>
-{{ next_button }} 
+    .header h1 {
+        color: #5a6c7d;
+        font-size: 2em;
+        margin-bottom: 10px;
+        font-weight: 400;
+    }
 
+    .info-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    .intro-section {
+        margin-bottom: 30px;
+    }
+
+    .intro-text {
+        font-size: 1.1em;
+        color: #495057;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 400;
+    }
+
+    .highlight {
+        color: #28a745;
+        font-weight: 500;
+    }
+
+    .options-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .option-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+    }
+
+    .option-icon {
+        font-size: 1.5em;
+        margin-right: 15px;
+        min-width: 30px;
+    }
+
+    .option-text {
+        color: #495057;
+        font-weight: 400;
+    }
+
+    .game-section {
+        margin-bottom: 30px;
+    }
+
+    .game-section h3 {
+        color: #5a6c7d;
+        margin-bottom: 20px;
+        font-size: 1.3em;
+        font-weight: 500;
+    }
+
+    .game-description {
+        font-size: 1.1em;
+        color: #495057;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 400;
+    }
+
+    .image-container {
+        text-align: center;
+        margin: 25px 0;
+    }
+
+    .game-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .probability-text {
+        font-size: 1.1em;
+        color: #495057;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 400;
+    }
+
+    .outcomes-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .outcome-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .outcome-item.yellow {
+        border-left: 4px solid #ffc107;
+    }
+
+    .outcome-item.purple {
+        border-left: 4px solid #6f42c1;
+    }
+
+    .outcome-icon {
+        font-size: 1.5em;
+        margin-right: 15px;
+        min-width: 30px;
+    }
+
+    .outcome-text {
+        color: #495057;
+        font-weight: 400;
+    }
+
+    .example-section {
+        margin-top: 30px;
+    }
+
+    .example-section h3 {
+        color: #5a6c7d;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+
+    .example-outcomes {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .example-item {
+        display: flex;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+    }
+
+    .example-item.yellow {
+        border-left: 4px solid #ffc107;
+    }
+
+    .example-item.purple {
+        border-left: 4px solid #6f42c1;
+    }
+
+    .example-icon {
+        font-size: 1.8em;
+        margin-right: 15px;
+        min-width: 30px;
+    }
+
+    .example-content {
+        flex: 1;
+    }
+
+    .example-title {
+        color: #495057;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .example-detail {
+        color: #6c757d;
+        font-size: 0.95em;
+        font-weight: 400;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .otree-btn-next {
+        background-color: #6c757d;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: 400;
+    }
+
+    .otree-btn-next:hover {
+        background-color: #5a6268;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        .info-card {
+            padding: 20px;
+        }
+
+        .option-item,
+        .outcome-item,
+        .example-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .option-icon,
+        .outcome-icon,
+        .example-icon {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+</style>
 {% endblock %}

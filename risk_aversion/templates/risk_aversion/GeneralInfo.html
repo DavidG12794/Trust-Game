@@ -7,6 +7,12 @@
 {% block content %}
 <div class="container">
     <div class="info-card">
+        <div class="welcome-section">
+            <p class="welcome-text">
+                Bonjour, dans cette partie, nous allons vous demander de faire des choix avec les jetons que vous venez de gagner
+            </p>
+        </div>
+
         <div class="intro-section">
             <p class="intro-text">
                 Vous allez maintenant participer à <strong>{{ etape }}</strong> de
@@ -68,17 +74,34 @@
     }
 
     .header h1 {
-        color: #2c3e50;
+        color: #5a6c7d;
         font-size: 2em;
         margin-bottom: 10px;
+        font-weight: 400;
     }
 
     .info-card {
         background: white;
         border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         padding: 30px;
         margin-bottom: 30px;
+    }
+
+    .welcome-section {
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #6c757d;
+    }
+
+    .welcome-text {
+        font-size: 1.1em;
+        color: #495057;
+        line-height: 1.6;
+        margin: 0;
+        font-weight: 400;
     }
 
     .intro-section {
@@ -87,8 +110,9 @@
 
     .intro-text {
         font-size: 1.2em;
-        color: #2c3e50;
+        color: #5a6c7d;
         line-height: 1.6;
+        font-weight: 400;
     }
 
     .steps-section {
@@ -96,9 +120,10 @@
     }
 
     .steps-section h3 {
-        color: #2c3e50;
+        color: #5a6c7d;
         margin-bottom: 20px;
         font-size: 1.3em;
+        font-weight: 500;
     }
 
     .steps-list {
@@ -114,10 +139,12 @@
         background: #f8f9fa;
         border-radius: 8px;
         transition: transform 0.2s;
+        border: 1px solid #e9ecef;
     }
 
     .step-item:hover {
         transform: translateX(5px);
+        background: #e9ecef;
     }
 
     .step-icon {
@@ -132,13 +159,15 @@
 
     .step-content p {
         margin: 0;
-        color: #34495e;
+        color: #495057;
         line-height: 1.5;
+        font-weight: 400;
     }
 
     .highlight {
-        color: #27ae60;
+        color: #28a745;
         font-size: 1.1em;
+        font-weight: 500;
     }
 
     .alert-box {
@@ -164,11 +193,13 @@
         margin: 0 0 10px 0;
         color: #1565c0;
         line-height: 1.6;
+        font-weight: 400;
     }
 
     .alert-note {
         font-size: 0.95em;
         color: #1976d2 !important;
+        font-weight: 400;
     }
 
     .button-container {
@@ -177,7 +208,7 @@
     }
 
     .otree-btn-next {
-        background-color: #3498db;
+        background-color: #6c757d;
         color: white;
         padding: 12px 30px;
         border: none;
@@ -185,10 +216,11 @@
         font-size: 1.1em;
         cursor: pointer;
         transition: background-color 0.3s;
+        font-weight: 400;
     }
 
     .otree-btn-next:hover {
-        background-color: #2980b9;
+        background-color: #5a6268;
     }
 
     /* Responsive Design */

@@ -1,16 +1,252 @@
-{{ block title }} FIN {{ endblock }} 
+{{ block title }}
+<div class="header">
+    <h1>FIN</h1>
+</div>
+{{ endblock }}
 
 {{ block content }}
+<div class="container">
+    <div class="info-card">
+        <div class="results-section">
+            <div class="results-header">
+                <div class="results-icon">🏆</div>
+                <h3>Résultats du tirage au sort</h3>
+            </div>
+            
+            <div class="results-list">
+                <div class="result-item">
+                    <div class="result-label">N° Décision :</div>
+                    <div class="result-value">{{ i_visible }} <span class="note">(en réalité {{ i_final }})</span></div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-label">Choix lors de cette décision :</div>
+                    <div class="result-value">{{ invested }}</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-label">Boule tirée :</div>
+                    <div class="result-value ball-result">{{ ball_color }}</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-label">Profit associé :</div>
+                    <div class="result-value profit">{{ profit | to0 }}</div>
+                </div>
+                
+                <div class="result-item total">
+                    <div class="result-label">Votre total de jetons :</div>
+                    <div class="result-value total-amount">{{ payoff | to0 }}</div>
+                </div>
+            </div>
+        </div>
 
-<p><strong>Résultats du tirage au sort:</strong></p>
-<ul>
-  <li>N° Décision : {{ i_visible }} ( en réalité {{ i_final }} )</li>
-  <li>Choix lors de cette décision : {{ invested }}</li>
-  <li>Boule tirée : {{ ball_color }}</li>
-  <li>Profit associé : {{ profit | to0 }}</li>
-  <li>Votre total de jetons: {{ payoff | to0 }}</li>
-</ul>
+        <div class="summary-box">
+            <div class="summary-icon">🎉</div>
+            <div class="summary-content">
+                <p>
+                    Félicitations ! Vous avez terminé l'expérience. Votre gain final a été déterminé par le tirage au sort de la décision sélectionnée.
+                </p>
+            </div>
+        </div>
+    </div>
 
-{{ next_button }} 
+    <div class="button-container">
+        {{ next_button }}
+    </div>
+</div>
 
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .header h1 {
+        color: #5a6c7d;
+        font-size: 2em;
+        margin-bottom: 10px;
+        font-weight: 400;
+    }
+
+    .info-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    .results-section {
+        margin-bottom: 30px;
+    }
+
+    .results-header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #d4edda;
+        border-radius: 8px;
+        border-left: 4px solid #28a745;
+    }
+
+    .results-icon {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+    }
+
+    .results-header h3 {
+        color: #155724;
+        margin: 0;
+        font-size: 1.4em;
+        font-weight: 500;
+    }
+
+    .results-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        transition: background-color 0.2s;
+    }
+
+    .result-item:hover {
+        background: #e9ecef;
+    }
+
+    .result-item.total {
+        background: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        font-weight: 500;
+    }
+
+    .result-label {
+        color: #495057;
+        font-weight: 500;
+        flex: 1;
+    }
+
+    .result-value {
+        color: #495057;
+        font-weight: 400;
+        text-align: right;
+        flex: 1;
+    }
+
+    .note {
+        color: #6c757d;
+        font-size: 0.9em;
+        font-style: italic;
+    }
+
+    .ball-result {
+        font-weight: 500;
+        color: #6f42c1;
+    }
+
+    .profit {
+        font-weight: 500;
+        color: #28a745;
+    }
+
+    .total-amount {
+        font-weight: 600;
+        color: #28a745;
+        font-size: 1.1em;
+    }
+
+    .summary-box {
+        display: flex;
+        padding: 20px;
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    .summary-icon {
+        font-size: 1.8em;
+        margin-right: 15px;
+        min-width: 30px;
+    }
+
+    .summary-content {
+        flex: 1;
+    }
+
+    .summary-content p {
+        margin: 0;
+        color: #856404;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .otree-btn-next {
+        background-color: #6c757d;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: 400;
+    }
+
+    .otree-btn-next:hover {
+        background-color: #5a6268;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        .info-card {
+            padding: 20px;
+        }
+
+        .result-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .result-label,
+        .result-value {
+            text-align: center;
+        }
+
+        .summary-box {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .summary-icon {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+</style>
 {{ endblock }}

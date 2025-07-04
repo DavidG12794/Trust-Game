@@ -1,36 +1,187 @@
-{{ block title }} Tâche rémunérée {{ endblock }} 
-{{ block content }}
-<div class="card mb-3">
-  <div class="card-body">
-    
-    <p>
-      Vous allez maintenant accomplir une tâche qui vous permettra de gagner
-      <strong>{{ C.ENDOWMENT | to0 }}</strong>.
-    </p>
-    <p>
-      Trouver le nombre d'occurrences du chiffre
-      <strong>{{ digit }}</strong> dans les <strong>200</strong> premières
-      décimales du nombre π :
-    </p>
+{{ block title }}
+<div class="header">
+    <h1>Tâche rémunérée</h1>
+</div>
+{{ endblock }}
 
-    <div
-      class="pi-digits"
-      style="
-        font-family: monospace;
-        font-size: 1.2em;
-        line-height: 1.8;
-        word-break: break-all;
-        padding: 15px;
-        background-color: #f8f9fa;
-        border-radius: 5px;
-        margin: 20px 0;
-      "
-    >
-      π = 3, {{ pi_digits }}
+{{ block content }}
+<div class="container">
+    <div class="info-card">
+        <div class="intro-section">
+            <p class="intro-text">
+                Vous allez maintenant accomplir une tâche qui vous permettra de gagner
+                <strong class="highlight">{{ C.ENDOWMENT | to0 }}</strong>.
+            </p>
+            <p class="task-description">
+                Trouver le nombre d'occurrences du chiffre
+                <strong class="digit-highlight">{{ digit }}</strong> dans les <strong>200</strong> premières
+                décimales du nombre π :
+            </p>
+        </div>
+
+        <div class="pi-section">
+            <div class="pi-digits">
+                π = 3, {{ pi_digits }}
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-group">{{ formfields }}</div>
+        </div>
     </div>
 
-    <div class="form-group mt-4">{{ formfields }}</div>
-  </div>
+    <div class="button-container">
+        {{ next_button }}
+    </div>
 </div>
 
-{{ next_button }} {{ endblock }}
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .header h1 {
+        color: #5a6c7d;
+        font-size: 2em;
+        margin-bottom: 10px;
+        font-weight: 400;
+    }
+
+    .info-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    .intro-section {
+        margin-bottom: 30px;
+    }
+
+    .intro-text {
+        font-size: 1.1em;
+        color: #495057;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        font-weight: 400;
+    }
+
+    .task-description {
+        font-size: 1.1em;
+        color: #495057;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 400;
+    }
+
+    .highlight {
+        color: #28a745;
+        font-weight: 500;
+    }
+
+    .digit-highlight {
+        color: #6f42c1;
+        font-weight: 500;
+    }
+
+    .pi-section {
+        margin-bottom: 30px;
+    }
+
+    .pi-digits {
+        font-family: 'Courier New', monospace;
+        font-size: 1.1em;
+        line-height: 1.8;
+        word-break: break-all;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        color: #495057;
+        font-weight: 400;
+    }
+
+    .form-section {
+        margin-top: 25px;
+    }
+
+    .form-group {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+    }
+
+    .form-group label {
+        color: #495057;
+        font-weight: 500;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 1em;
+        color: #495057;
+        background-color: white;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #6c757d;
+        box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.25);
+    }
+
+    .button-container {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .otree-btn-next {
+        background-color: #6c757d;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: 400;
+    }
+
+    .otree-btn-next:hover {
+        background-color: #5a6268;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        .info-card {
+            padding: 20px;
+        }
+
+        .pi-digits {
+            font-size: 1em;
+            padding: 15px;
+        }
+
+        .form-group {
+            padding: 15px;
+        }
+    }
+</style>
+{{ endblock }}

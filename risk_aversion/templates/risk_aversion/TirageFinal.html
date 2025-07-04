@@ -1,9 +1,168 @@
-{{ block title }} Tirage Final {{ endblock }}
+{{ block title }}
+<div class="header">
+    <h1>Tirage Final</h1>
+</div>
+{{ endblock }}
 
 {{ block content }}
+<div class="container">
+    <div class="info-card">
+        <div class="intro-section">
+            <div class="final-draw-section">
+                <div class="draw-icon">🎲</div>
+                <p class="intro-text">
+                    Parmi toutes vos décisions, une sera sélectionnée aléatoirement.
+                </p>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-icon">⚡</div>
+                <div class="info-content">
+                    <p>
+                        Le moment est venu de découvrir quelle décision sera utilisée pour déterminer votre gain final. 
+                        Toutes vos réponses ont été enregistrées et le tirage va maintenant avoir lieu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<p>Parmi toutes vos décisions, une sera séléctionnée aléatoirement.</p>
+    <div class="button-container">
+        {{ next_button }}
+    </div>
+</div>
 
-{{ next_button  }}
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .header h1 {
+        color: #5a6c7d;
+        font-size: 2em;
+        margin-bottom: 10px;
+        font-weight: 400;
+    }
+
+    .info-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+
+    .intro-section {
+        margin-bottom: 30px;
+    }
+
+    .final-draw-section {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 30px;
+        background: #fff3cd;
+        border-radius: 8px;
+        border-left: 4px solid #ffc107;
+    }
+
+    .draw-icon {
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+
+    .intro-text {
+        font-size: 1.3em;
+        color: #856404;
+        line-height: 1.6;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    .info-box {
+        display: flex;
+        padding: 20px;
+        background: #e3f2fd;
+        border-left: 4px solid #2196f3;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+    .info-icon {
+        font-size: 1.8em;
+        margin-right: 15px;
+        min-width: 30px;
+    }
+
+    .info-content {
+        flex: 1;
+    }
+
+    .info-content p {
+        margin: 0;
+        color: #1565c0;
+        line-height: 1.6;
+        font-weight: 400;
+    }
+
+    .button-container {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .otree-btn-next {
+        background-color: #6c757d;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: 400;
+    }
+
+    .otree-btn-next:hover {
+        background-color: #5a6268;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .container {
+            padding: 10px;
+        }
+
+        .info-card {
+            padding: 20px;
+        }
+
+        .final-draw-section {
+            padding: 20px;
+        }
+
+        .draw-icon {
+            font-size: 2.5em;
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .info-icon {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+</style>
 {{ endblock }}
